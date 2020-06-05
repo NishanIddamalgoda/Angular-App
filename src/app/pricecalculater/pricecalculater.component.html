@@ -1,0 +1,73 @@
+<div class="container">
+    <a href="/" type="button" class="btn btn btn-outline-dark btn_cl_pg" ><<< Pricing List</a>
+    <div class="row mrg-5">
+        <div class="col-sm-6">
+            <div class="card">
+            <h5 class="card-header">Select an item for price calculation</h5>
+            <div class="card-body">
+                <div class="card crd_wdth" >
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let item of item_list" ><input type="radio" name="optradio" class="mrg-3" (click)="itemSelect(item)" >{{item.item_name}}</li>
+                        
+                    </ul>
+                </div>                        
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+            <h5 class="card-header">{{selectedItem.item_name}}</h5>
+            <div class="card-body">
+                
+                <form>
+                    <div class="form-row">                                
+                        <div class="form-group col-md-4">
+                            <label for="inputUnitType">Units/Cartons</label>
+                            <select id="inputState" [disabled]="inputFeilDisable" [(ngModel)]="selectionType" [ngModelOptions]="{standalone: true}" (change)="unitCartonSelect()" class="form-control">
+                                <option value="Choose...">Choose...</option>
+                                <option value="Units">Units</option>
+                                <option value="Cartons">Cartons</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputQty">Quanity</label>
+                            <input type="number" [disabled]="inputUnitsCarton" class="form-control" id="inputQty" [(ngModel)]="selectedItem.current_selected_units" [ngModelOptions]="{standalone: true}" (input)="onUnitChange()">
+                        </div>                        
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="inputQty">Units</label>
+                            <input type="text" class="form-control" value="{{item_price.units}}" id="unt" readonly>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputQty">Cartons</label>
+                            <input type="text" class="form-control" value="{{item_price.cartons}}" id="crtn" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">                        
+                        <div class="form-group col-md-3">
+                            <label for="inputQty">Total Unit Price</label>
+                            <input type="text" class="form-control" value="{{item_price.tot_price_unit}}" id="totunitpr" readonly>
+                        </div>
+                        <div class="form-group col-md-1">
+                            <label for="inputQty">+</label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputQty">Total Carton Price </label>
+                            <input type="text" class="form-control" value="{{item_price.tot_price_carton}}" id="totcrtnpr" readonly>
+                        </div>
+                         <div class="form-group col-md-1">
+                            <label for="inputQty">=</label>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputQty">Total</label>
+                            <input type="text" class="form-control" value="{{item_price.total_price}}" id="ttl" readonly>
+                        </div>
+                    </div>
+                </form>                        
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+

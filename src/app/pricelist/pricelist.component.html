@@ -1,0 +1,45 @@
+<article >
+    <h1>Product Pricing</h1>
+
+    <table *ngFor="let item of all_item">
+        <thead>
+            <tr>
+            <th class="hide"></th>
+            <th class="bg-blue">Single Unit Price</th>
+            <th class="bg-blue">Units Per Carton</th>
+            <th class="bg-blue">Carton Price</th>
+            <th class="bg-blue">Units</th>
+            <th class="bg-blue">Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{item.item_name}}</td>
+                <td>Rs. <span >{{ (item.carton_price*item.single_unit_increment)/item.units_p_carton}}</span></td>
+                <td><span >{{item.units_p_carton}}</span></td>
+                <td>Rs. <span >{{item.carton_price}}</span></td>
+                <td><select id="units" class="select-class" (change)='onOptionsSelected(item)' [(ngModel)]="item.current_selected_units">
+                        <option value="1">1</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                    </select></td>
+                <td>Rs. <span >{{item.current_selection_total}}</span></td>
+            </tr>
+            <tr>
+                <td colspan="1" class="sep">More Details</td>
+                <td colspan="5" class="sep">{{item.carton_dicnt_percnt}}% off the carton price for {{item.carton_dicnt_qty}} or more cartons</td>
+            </tr>                       
+        </tbody>
+    </table>
+
+    <a href="calc" type="button" class="btn btn btn-outline-dark btn_cl_pg" > Price Cal >>></a>
+
+</article>
